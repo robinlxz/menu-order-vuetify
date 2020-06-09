@@ -69,7 +69,15 @@ export default new Vuex.Store({
       }
     ]
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    CLEAR_CART(state) {
+      state.cart = []
+    }
+  },
+  actions: {
+    clear_cart_action({ commit }) {
+      commit('CLEAR_CART')
+    }
+  },
   modules: {}
 })

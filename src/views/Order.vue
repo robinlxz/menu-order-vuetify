@@ -1,40 +1,35 @@
 <template>
   <div class="order">
-    <h1>This is order page</h1>
-    <div class="cart">
-      <p>In cart:</p>
-      <div v-for="(dish, i) in cart" :key="i">
-        <h3>{{ dish.title }}</h3>
-        <h3 @click="removeFromCart(i)">X</h3>
-      </div>
-    </div>
-    <div class="cart-container">
-      <p>{{ cart.length }} items in total.</p>
-      <p>Price: ${{ totalPrice }}</p>
-    </div>
-    <form action>
-      <h2>Pickup info</h2>
-      <input type="text" placeholder="Extra requirement" />
-    </form>
-    <!-- <button>Make Order</button> -->
-    <input type="button" value="Make Order" />
+    <v-content>
+      <v-container fluid>
+        <v-col cols="12" sm="8" md="6">
+          <h1>Your order</h1>
+          <v-card v-for="(dish, i) in cart" :key="i" class="mb-2 order-card">
+            <div class="order-card-title">{{ dish.title }}</div>
+            <v-btn @click="removeFromCart(i)" text>Remove</v-btn>
+          </v-card>
+        </v-col>
+
+        <CartInfo />
+        <DeliveryInfoForm />
+      </v-container>
+    </v-content>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import CartInfo from '@/components/CartInfo.vue'
+import DeliveryInfoForm from '@/components/DeliveryInfoForm.vue'
 
 export default {
   name: 'Order',
+  components: {
+    CartInfo,
+    DeliveryInfoForm
+  },
   computed: {
-    ...mapState(['cart']),
-    totalPrice() {
-      let total = 0
-      for (let dish of this.cart) {
-        total += dish.price * 10 //To avoid decimal caculation problem
-      }
-      return total / 10
-    }
+    ...mapState(['cart'])
   },
   methods: {
     removeFromCart(index) {
@@ -46,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 .order {
-  background-color: #bbb;
+  // background-color: #bbb;
 
   p {
     margin: 0;
@@ -56,6 +51,15 @@ export default {
   .cart {
     width: 60%;
     margin: 0 auto;
+  }
+
+  .order-card {
+    display: flex;
+    justify-content: space-between;
+
+    .order-card-title {
+      margin: auto 0.5rem;
+    }
   }
 }
 </style>
