@@ -1,4 +1,4 @@
 module.exports = {
   transpileDependencies: ['vuetify'],
-  publicPath: '/name-of-your-project/'
+  publicPath: '/menu-order-vuetify/'
 }
