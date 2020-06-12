@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Menu from '../views/Menu.vue'
 import Order from '../views/Order.vue'
+import HeyMenu from '../views/HeyMenu.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,11 @@ const routes = [
     path: '/order',
     name: 'order-route',
     component: Order
+  },
+  {
+    path: '/heymenu',
+    name: 'hey-menu-route',
+    component: HeyMenu
   }
 ]
 

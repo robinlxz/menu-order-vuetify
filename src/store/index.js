@@ -16,16 +16,7 @@ export default new Vuex.Store({
         'english-title': 'Salted Baked Chicken Rice',
         owner: 'Chef Mao',
         category: 'Rice set',
-        attendees: [
-          {
-            id: 'abc123',
-            name: 'PSS'
-          },
-          {
-            id: 'def456',
-            name: 'XZ'
-          }
-        ]
+        image: 'https://i.ibb.co/c8VnbwT/food1.jpg'
       },
       {
         id: 5,
@@ -36,16 +27,7 @@ export default new Vuex.Store({
         'english-title': 'Salted Baked Chicken dry noodle',
         owner: 'Chef Mao',
         category: 'Noodle set',
-        attendees: [
-          {
-            id: 'abc123',
-            name: 'Adam Jahr'
-          },
-          {
-            id: 'ghi789',
-            name: 'Beth Swanson'
-          }
-        ]
+        image: 'https://i.ibb.co/tHgCfxV/food2.jpg'
       },
       {
         id: 6,
@@ -56,16 +38,7 @@ export default new Vuex.Store({
         'english-title': 'Tomato and onion beef/pork',
         owner: 'Chef Mao',
         category: 'Cusine (no rice)',
-        attendees: [
-          {
-            id: 'abc123',
-            name: 'Adam Jahr'
-          },
-          {
-            id: 'ghi789',
-            name: 'Beth Swanson'
-          }
-        ]
+        image: 'https://i.ibb.co/WgYqCyN/food3.jpg'
       }
     ]
   },
