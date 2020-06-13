@@ -10,9 +10,9 @@
       <v-card-subtitle>Price: {{ dish.price }}</v-card-subtitle>
 
       <v-card-actions>
-        <v-btn text>Share</v-btn>
+        <v-btn color="orange darken-2" text @click="addDishToCart(dish)">Add</v-btn>
 
-        <v-btn color="purple" text>Explore</v-btn>
+        <!-- <v-btn color="purple" text>Explore</v-btn> -->
 
         <v-spacer></v-spacer>
 
@@ -41,7 +41,12 @@ export default {
     show: false
   }),
   computed: {
-    ...mapState(['dishes'])
+    ...mapState(['dishes', 'cart'])
+  },
+  methods: {
+    addDishToCart(dish) {
+      this.cart.push(dish)
+    }
   }
 }
 </script>
