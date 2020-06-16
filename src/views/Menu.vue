@@ -66,7 +66,7 @@ export default {
       // console.log(id);
     },
     clearCart() {
-      this.$store.dispatch('clear_cart_action')
+      this.$store.dispatch('clearCartAction')
     }
   },
   computed: {

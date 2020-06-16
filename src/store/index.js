@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import OrderServices from '@/services/OrderServices.js'
 
 Vue.use(Vuex)
 
@@ -45,11 +46,28 @@ export default new Vuex.Store({
   mutations: {
     CLEAR_CART(state) {
       state.cart = []
-    }
+    },
+    PLACE_HOLDER() {}
   },
   actions: {
-    clear_cart_action({ commit }) {
+    clearCartAction({ commit }) {
       commit('CLEAR_CART')
+    },
+    postOrderAction({ commit, state }, { formObj }) {
+      const orderObj = {
+        table: formObj,
+        order: state.cart.map(item => {
+          return { id: item.id, title: item.title }
+        })
+      }
+      console.log('post orderObj', orderObj)
+      OrderServices.postOrder(orderObj)
+        // .then(() => commit('CLEAR_CART'))
+        .then(() => commit('PLACE_HOLDER'))
+        .catch(error => {
+          console.log('There is error for postOrderAction')
+          console.log(error.response)
+        })
     }
   },
   modules: {}
