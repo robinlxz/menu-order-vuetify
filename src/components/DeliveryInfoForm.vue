@@ -12,6 +12,8 @@
           </v-col>
 
           <v-btn color="primary" @click="submitDelieveryForm">Submit</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn color="success" @click="sendEmail">Email Test</v-btn>
         </v-row>
       </v-container>
     </v-form>
@@ -34,6 +36,9 @@ export default {
         phone: this.phone
       }
       this.$store.dispatch('postOrderAction', { formObj: formObj })
+    },
+    sendEmail() {
+      // emailjs.send()
     }
   }
 }
