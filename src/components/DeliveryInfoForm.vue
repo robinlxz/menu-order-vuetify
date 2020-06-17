@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import emailjs from 'emailjs-com'
+// import emailjs from 'emailjs-com'
 
 export default {
   name: 'DeliveryInfoForm',
@@ -40,31 +40,29 @@ export default {
       this.$store.dispatch('postOrderAction', { formObj: formObj })
     },
     sendEmail() {
-      // emailjs.send()
-      // ;(function() {
-      //   emailjs.init('user_rparbFDX8fAYatj1PKEoO')
-      // })()
       const templateParams = {
         name: this.name,
         contact: this.phone,
         dishes: this.$store.state.cart.map(d => d.title)
       }
 
-      emailjs
-        .send(
-          'default_service',
-          'singhey01',
-          templateParams,
-          'user_rparbFDX8fAYatj1PKEoO'
-        )
-        .then(
-          response => {
-            console.log('SUCCESS!', response.status, response.text)
-          },
-          err => {
-            console.log('FAILED...', err)
-          }
-        )
+      console.log(templateParams)
+      console.log('No email send at the moment')
+      // emailjs
+      //   .send(
+      //     'default_service',
+      //     'singhey01',
+      //     templateParams,
+      //     'user_rparbFDX8fAYatj1PKEoO'
+      //   )
+      //   .then(
+      //     response => {
+      //       console.log('SUCCESS!', response.status, response.text)
+      //     },
+      //     err => {
+      //       console.log('FAILED...', err)
+      //     }
+      //   )
     }
   }
 }
