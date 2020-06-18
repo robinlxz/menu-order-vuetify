@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import emailjs from 'emailjs-com'
+// import emailjs from 'emailjs-com'
 
 export default {
   name: 'DeliveryInfoForm',
@@ -73,31 +73,31 @@ export default {
       } else {
         const templateParams = {
           name: this.name,
-          contact: toString(this.phone),
+          contact: this.phone,
           dishes: this.$store.state.cart.map(d => d.title)
         }
 
-        // console.log(templateParams)
-        // console.log('No email send at the moment')
-        // this.successSubmittedFunc()
+        console.log(templateParams)
+        console.log('No email send at the moment')
+        this.successSubmittedFunc()
 
-        emailjs
-          .send(
-            'default_service',
-            'singhey01',
-            templateParams,
-            'user_rparbFDX8fAYatj1PKEoO'
-          )
-          .then(
-            response => {
-              console.log('SUCCESS!', response.status, response.text)
-              if (response.status == 200) this.successSubmittedFunc()
-            },
-            err => {
-              console.log('FAILED...', err)
-              this.submitErrorAlert = err
-            }
-          )
+        // emailjs
+        //   .send(
+        //     'default_service',
+        //     'singhey01',
+        //     templateParams,
+        //     'user_rparbFDX8fAYatj1PKEoO'
+        //   )
+        //   .then(
+        //     response => {
+        //       console.log('SUCCESS!', response.status, response.text)
+        //       if (response.status == 200) this.successSubmittedFunc()
+        //     },
+        //     err => {
+        //       console.log('FAILED...', err)
+        //       this.submitErrorAlert = err
+        //     }
+        //   )
       }
     }
   }
