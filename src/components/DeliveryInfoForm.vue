@@ -34,7 +34,7 @@
 </template>
 
 <script>
-// import emailjs from 'emailjs-com'
+import emailjs from 'emailjs-com'
 
 export default {
   name: 'DeliveryInfoForm',
@@ -64,6 +64,7 @@ export default {
     sendEmail() {
       this.errors = []
       this.successInfo = ''
+      // Validate order
       if (this.$store.state.cart.length == 0) {
         this.errors.push('Seemed your order is empty #_#')
       } else if (this.name == '' || this.phone.length !== 8) {
@@ -72,32 +73,33 @@ export default {
           this.errors.push('Please fill in correct contact number')
       } else {
         const templateParams = {
-          name: this.name,
-          contact: this.phone,
+          name: [this.name, this.phone],
+          number: this.phone,
           dishes: this.$store.state.cart.map(d => d.title)
         }
 
-        console.log(templateParams)
-        console.log('No email send at the moment')
-        this.successSubmittedFunc()
+        // console.log(templateParams)
+        // console.log(typeof this.phone)
+        // console.log('No email send at the moment')
+        // this.successSubmittedFunc()
 
-        // emailjs
-        //   .send(
-        //     'default_service',
-        //     'singhey01',
-        //     templateParams,
-        //     'user_rparbFDX8fAYatj1PKEoO'
-        //   )
-        //   .then(
-        //     response => {
-        //       console.log('SUCCESS!', response.status, response.text)
-        //       if (response.status == 200) this.successSubmittedFunc()
-        //     },
-        //     err => {
-        //       console.log('FAILED...', err)
-        //       this.submitErrorAlert = err
-        //     }
-        //   )
+        emailjs
+          .send(
+            'default_service',
+            'singhey01',
+            templateParams,
+            'user_rparbFDX8fAYatj1PKEoO'
+          )
+          .then(
+            response => {
+              console.log('SUCCESS!', response.status, response.text)
+              if (response.status == 200) this.successSubmittedFunc()
+            },
+            err => {
+              console.log('FAILED...', err)
+              this.submitErrorAlert = err
+            }
+          )
       }
     }
   }
