@@ -29,4 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  text-decoration: none;
+}
 </style>
